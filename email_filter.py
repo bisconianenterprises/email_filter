@@ -240,7 +240,7 @@ commands = {
     },
 }
 
-def main():
+if __name__ == "__main__":
     args = sys.argv[1:]
     pop_domain = ''
     username = ''
@@ -300,5 +300,3 @@ def main():
                 commands[command]['execute'](flags)
         else:
             print(f'Unknown command: \"{command}\". Use "help" to see a list of available commands.')
-
-main()
