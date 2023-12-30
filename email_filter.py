@@ -8,6 +8,7 @@ import math
 from email import message_from_bytes
 from email.header import decode_header, make_header
 from typing import List
+from getpass import getpass
 
 # prints the supplied fields in an aligned table
 def columns_print(cols: List[str], headers: List[dict]):
@@ -244,7 +245,6 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     pop_domain = ''
     username = ''
-    password = ''
     global config
     config = {}
     # if config file doesn't exist, ask for parameters and create file
@@ -259,7 +259,7 @@ if __name__ == "__main__":
         with open(config_path, 'r') as config_file:
             config = json.loads(config_file.read())
 
-    password = input('Enter your password: ')
+    password = getpass()
     global M
     try:
         M = poplib.POP3_SSL(config.get('credentials').get('pop_domain'))
